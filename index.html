@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #343a34;
+            height: 100vh;
+        }
+
+        .container{
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+
+            
+        }
+
+        .parent{
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+        }
+
+        .toastAlert{
+            border-radius: 5px;
+            border: 1px solid white;
+            background-color: #343a34;
+            color: crimson;
+            padding: 30px;
+            text-transform: uppercase;
+            position: relative;
+            transition: bottom .4s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn btn-primary">click</button>
+    </div>
+
+    <div class="parent"></div>
+
+
+
+    <script>
+        const button = document.querySelector(".btn");
+        const parent = document.querySelector(".parent");
+
+        const openToastAlert = () => {
+            parent.innerHTML= ""
+            const toastAlert = document.createElement("div");
+            toastAlert.append("Vanilla Javascript toast alert")
+            toastAlert.classList.add("toastAlert");
+            parent.append(toastAlert);
+            toastAlert.style.bottom = `-${toastAlert.offsetHeight}px`;
+            setTimeout(()=>{
+                toastAlert.style.bottom = "0px"
+            },100)
+
+            setTimeout(()=>{
+                toastAlert.style.bottom = `-${toastAlert.offsetHeight}px`
+            },2000)
+            
+        }
+
+
+
+        button.addEventListener("click", ()=>{
+            openToastAlert();
+        })
+    </script>
+</body>
+</html>
